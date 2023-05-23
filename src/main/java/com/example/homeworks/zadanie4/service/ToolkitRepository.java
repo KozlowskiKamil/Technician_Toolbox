@@ -11,10 +11,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class ToolkitRepository {
-
 
     private final List<Tool> tools;
 
@@ -37,11 +37,10 @@ public class ToolkitRepository {
     }
 
 
-    public List<Tool> findTool(ToolkitRepository toolkitRepository) {
-        List<Tool> findList = toolkitRepository.getTools().stream().filter(tool -> tool.getName().toLowerCase().contains("hammer")).toList();
+    public List<Tool> findTool(String name) {
+        List<Tool> findList = tools.stream().filter(tool -> tool.getName().toLowerCase().strip().contains(name.toLowerCase())).collect(Collectors.toList());
         return findList;
     }
-
 
     private List<Tool> readToolkit() {
         try {

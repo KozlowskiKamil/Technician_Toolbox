@@ -5,9 +5,7 @@ import com.example.homeworks.zadanie4.service.ToolkitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,9 +52,14 @@ public class ViewController {
 
 
     @GetMapping("/search")
-    public String findnTool(Model model) {
-        List<Tool> tools = toolkitRepository.getTools().stream().filter(s -> s.getName().contains("hammer")).collect(Collectors.toList());
-        model.addAttribute("tools", tools);
+    public String search() {
+        return "search";
+    }
+
+    @PostMapping("/findTool")
+    public String findTool(@RequestParam("name") String name, Model model) {
+        searchTool = toolkitRepository.findTool(name);
+        model.addAttribute("searchResults", searchTool);
         return "search";
     }
 
