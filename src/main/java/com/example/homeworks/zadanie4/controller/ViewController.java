@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -20,16 +21,31 @@ public class ViewController {
     public ViewController(ToolkitRepository toolkitRepository) {
         this.toolkitRepository = toolkitRepository;
     }
+
+
     @GetMapping("/")
     public String index() {
         return "index";
     }
+
+//    @GetMapping("/create")
+//    public String create() {
+//        return "create";
+//    }
+
 
     @GetMapping("/read")
     public String getTools(Model model) {
         List<Tool> tools = toolkitRepository.getTools();
         model.addAttribute("tools", tools);
         return "read";
+    }
+
+    @GetMapping("/create")
+    public String getTools2(Model model) {
+        List<Tool> tools = toolkitRepository.getTools();
+        model.addAttribute("tools", tools);
+        return "create";
     }
 
     @PostMapping("/create")
@@ -41,6 +57,5 @@ public class ViewController {
         model.addAttribute("tools", tools);
         return "create";
     }
-
 
 }
