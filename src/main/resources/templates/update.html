@@ -5,7 +5,7 @@
     <title>Tool Box</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body class="overflow-y-scroll">
 <div class="container text-center ">
@@ -14,33 +14,36 @@
             <a class="navbar-brand" href="/">Tool Box</a>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link" href="create">Create</a>
-                    <a class="nav-link" href="read">Read</a>
-                    <a class="nav-link" href="update">Update</a>
-                    <a class="nav-link" href="delete">Delete</a>
-                    <a class="nav-link" href="search">Search</a>
+                    <a class="nav-link" href="create"><span class="span">C</span>reate</a>
+                    <a class="nav-link" href="read"><span class="span">R</span>ead</a>
+                    <a class="nav-link" href="update"><span class="span">U</span>pdate</a>
+                    <a class="nav-link" href="delete"><span class="span">D</span>elete</a>
+                    <a class="nav-link" href="search"><span class="span">S</span>earch</a>
                 </div>
             </div>
         </div>
     </nav>
     <h1>Tool Box</h1>
     <img src="/img/logo.jpg" style="max-width: 300px; margin-bottom: 30px">
+    <h3>Add tool</h3>
     <div class="row">
-        <div class="col">
-            <h3>Add tool</h3>
-            <form action="/update" method="post">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name"><br><br>
-
-                <label for="size">Size:</label>
-                <input type="number" id="size" name="size" step="any"><br><br>
-
-                <label for="unit">Unit:</label>
-                <input type="text" id="unit" name="unit"><br><br>
-
-                <label for="actions">Actions:</label>
-                <div id="actionInputs">
-                    <input type="text" name="actions" placeholder="Enter action"><br>
+        <div class="col d-flex justify-content-center">
+            <form action="/update" method="post" style="justify-content: center">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="size" class="form-label">Size:</label>
+                    <input type="number" class="form-control" id="size" name="size" step="any">
+                </div>
+                <div class="mb-3">
+                    <label for="unit" class="form-label">Unit:</label>
+                    <input type="text" class="form-control" id="unit" name="unit">
+                </div>
+                <div id="actionInputs" class="mb-3">
+                    <label for="actions" class="form-label">Actions:</label>
+                    <input type="text" class="form-control" id="actions" name="actions" placeholder="Enter action">
                 </div>
                 <button type="button" class="btn btn-warning" onclick="addInput()">Add Action</button>
                 </br></br>
@@ -50,5 +53,15 @@
         </div>
     </div>
 </div>
+<script>
+    function addInput() {
+        var input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'actions';
+        input.placeholder = 'Enter action';
+        input.className = 'form-control mb-2';
+        document.getElementById('actionInputs').appendChild(input);
+    }
+</script>
 </body>
 </html>
