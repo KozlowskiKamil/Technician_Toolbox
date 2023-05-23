@@ -1,5 +1,3 @@
-
-
 package com.example.homeworks.zadanie4.service;
 
 import com.example.homeworks.zadanie4.model.Tool;
@@ -37,6 +35,13 @@ public class ToolkitRepository {
         tools.add(tool);
         return saveToolkit();
     }
+
+
+    public List<Tool> findTool(ToolkitRepository toolkitRepository) {
+        List<Tool> findList = toolkitRepository.getTools().stream().filter(tool -> tool.getName().toLowerCase().contains("hammer")).toList();
+        return findList;
+    }
+
 
     private List<Tool> readToolkit() {
         try {

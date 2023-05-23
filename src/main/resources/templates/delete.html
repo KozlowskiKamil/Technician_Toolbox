@@ -27,38 +27,14 @@
     <img src="/img/logo.jpg" style="max-width: 300px; margin-bottom: 30px">
     <div class="row">
         <div class="col">
-            <h3>Add tool</h3>
-            <form action="/create" method="post">
-                <label for="name">Name:</label>
+            <h3>Delete tool</h3>
+            <form action="/delete" method="DELETE">
+                <label for="name">Name:</label><br>
                 <input type="text" id="name" name="name"><br><br>
-
-                <label for="size">Size:</label>
-                <input type="number" id="size" name="size" step="any"><br><br>
-
-                <label for="unit">Unit:</label>
-                <input type="text" id="unit" name="unit"><br><br>
-
-                <label for="actions">Actions:</label>
-                <div id="actionInputs">
-                    <input type="text" name="actions" placeholder="Enter action"><br>
-                </div>
-                <button type="button" class="btn btn-warning" onclick="addInput()">Add Action</button>
-                </br></br>
-
-                <button type="submit" class="btn btn-success mb-5">Add Tool</button>
+                <button type="submit" class="btn btn-danger mb-5">Delete Tool</button>
             </form>
         </div>
     </div>
 </div>
-<script>
-    function addInput() {
-        var input = document.createElement('input');
-        input.type = 'text';
-        input.name = 'actions';
-        input.placeholder = 'Enter action';
-        input.className = 'form-control mb-2';
-        document.getElementById('actionInputs').appendChild(input);
-    }
-</script>
 </body>
 </html>

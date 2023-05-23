@@ -8,14 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ViewController {
 
     private final ToolkitRepository toolkitRepository;
+
+    List<Tool> searchTool;
 
     @Autowired // Dodaję aby było wiadomo gdzie jest DI choć wiadomo, że nie jest wymagana przy konstruktorze
     public ViewController(ToolkitRepository toolkitRepository) {
@@ -28,11 +30,10 @@ public class ViewController {
         return "index";
     }
 
-//    @GetMapping("/create")
-//    public String create() {
-//        return "create";
-//    }
-
+    @GetMapping("/create")
+    public String create() {
+        return "create";
+    }
 
     @GetMapping("/read")
     public String getTools(Model model) {
@@ -41,11 +42,22 @@ public class ViewController {
         return "read";
     }
 
-    @GetMapping("/create")
-    public String getTools2(Model model) {
-        List<Tool> tools = toolkitRepository.getTools();
+    @GetMapping("/update")
+    public String update() {
+        return "update";
+    }
+
+    @GetMapping("/delete")
+    public String delete() {
+        return "delete";
+    }
+
+
+    @GetMapping("/search")
+    public String findnTool(Model model) {
+        List<Tool> tools = toolkitRepository.getTools().stream().filter(s -> s.getName().contains("hammer")).collect(Collectors.toList());
         model.addAttribute("tools", tools);
-        return "create";
+        return "search";
     }
 
     @PostMapping("/create")
