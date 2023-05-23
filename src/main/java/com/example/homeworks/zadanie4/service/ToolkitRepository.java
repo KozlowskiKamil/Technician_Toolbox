@@ -1,7 +1,9 @@
 
 
-package com.example.homeworks.zadanie4;
+package com.example.homeworks.zadanie4.service;
 
+import com.example.homeworks.zadanie4.model.Tool;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Repository;
@@ -14,6 +16,8 @@ import java.util.List;
 
 @Repository
 public class ToolkitRepository {
+
+
     private final List<Tool> tools;
 
     public ToolkitRepository() {
@@ -24,6 +28,7 @@ public class ToolkitRepository {
         return new ArrayList<>(tools);
     }
 
+    @JsonIgnore
     public boolean isEmpty() {
         return tools.isEmpty();
     }

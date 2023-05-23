@@ -1,5 +1,8 @@
 package com.example.homeworks.zadanie4;
 
+import com.example.homeworks.zadanie4.model.Tool;
+import com.example.homeworks.zadanie4.service.ToolkitRepository;
+
 import java.util.*;
 
 public class ToolkitApp {
