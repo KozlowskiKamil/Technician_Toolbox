@@ -36,10 +36,15 @@ public class ToolkitRepository {
         return saveToolkit();
     }
 
-
     public List<Tool> findTool(String name) {
         List<Tool> findList = tools.stream().filter(tool -> tool.getName().toLowerCase().strip().contains(name.toLowerCase())).collect(Collectors.toList());
         return findList;
+    }
+
+
+    public String delete(String name) {
+        tools.removeIf(s -> s.getName().equals(name));
+        return name;
     }
 
     private List<Tool> readToolkit() {

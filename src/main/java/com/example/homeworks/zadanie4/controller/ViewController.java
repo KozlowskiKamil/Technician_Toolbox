@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class ViewController {
@@ -49,6 +48,13 @@ public class ViewController {
     public String delete() {
         return "delete";
     }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String delete(@RequestParam("name") String name) {
+        toolkitRepository.delete(name);
+        return "delete";
+    }
+
 
 
     @GetMapping("/search")
