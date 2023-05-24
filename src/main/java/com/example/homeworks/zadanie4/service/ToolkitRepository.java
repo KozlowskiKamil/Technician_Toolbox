@@ -44,6 +44,7 @@ public class ToolkitRepository {
 
     public String delete(String name) {
         tools.removeIf(s -> s.getName().equals(name));
+        saveToolkit();
         return name;
     }
 
