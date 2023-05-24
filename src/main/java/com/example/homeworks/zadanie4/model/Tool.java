@@ -7,6 +7,7 @@ import java.util.List;
 
 @Component
 public class Tool {
+    private Long id;
     private String name;
     private ToolSize toolSize;
     private List<String> actions;
@@ -19,6 +20,14 @@ public class Tool {
         this.name = name;
         this.toolSize = size;
         this.actions = actions;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public List<String> getActions() {

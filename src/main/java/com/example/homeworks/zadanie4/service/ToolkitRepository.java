@@ -32,6 +32,8 @@ public class ToolkitRepository {
     }
 
     public boolean add(Tool tool) {
+        int nextId = tools.size() + 1;
+        tool.setId(Long.valueOf(nextId));
         tools.add(tool);
         return saveToolkit();
     }
