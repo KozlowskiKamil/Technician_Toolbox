@@ -30,6 +30,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Name</th>
                     <th>Size</th>
                     <th>Actions</th>
@@ -37,6 +38,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="tool : ${tools}">
+                    <td th:text="${tool.id}"></td>
                     <td th:text="${tool.name}"></td>
                     <td th:text="${tool.toolSize.size} + ' ' + ${tool.toolSize.unit}"></td>
                     <td>

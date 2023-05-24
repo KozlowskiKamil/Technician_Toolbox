@@ -32,6 +32,8 @@ public class ToolkitRepository {
     }
 
     public boolean add(Tool tool) {
+        int nextId = tools.size() + 1;
+        tool.setId(Long.valueOf(nextId));
         tools.add(tool);
         return saveToolkit();
     }
@@ -42,9 +44,10 @@ public class ToolkitRepository {
     }
 
 
-    public String delete(String name) {
-        tools.removeIf(s -> s.getName().equals(name));
-        return name;
+    public Long delete(Long id) {
+        tools.removeIf(s -> s.getId() == id);
+        saveToolkit();
+        return id;
     }
 
     private List<Tool> readToolkit() {

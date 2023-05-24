@@ -50,9 +50,17 @@ public class ViewController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String delete(@RequestParam("name") String name) {
-        toolkitRepository.delete(name);
+    public String delete(@RequestParam("id") Long id) {
+        toolkitRepository.delete(id);
         return "delete";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(@RequestParam("id") Long id) {
+        toolkitRepository.delete(id);
+        toolkitRepository.getTools().get(Math.toIntExact(id)).setName("aaaaaaaaa");
+
+        return "update";
     }
 
 
