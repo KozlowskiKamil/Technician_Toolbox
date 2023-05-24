@@ -44,10 +44,10 @@ public class ToolkitRepository {
     }
 
 
-    public String delete(String name) {
-        tools.removeIf(s -> s.getName().equals(name));
+    public Long delete(Long id) {
+        tools.removeIf(s -> s.getId() == id);
         saveToolkit();
-        return name;
+        return id;
     }
 
     private List<Tool> readToolkit() {
