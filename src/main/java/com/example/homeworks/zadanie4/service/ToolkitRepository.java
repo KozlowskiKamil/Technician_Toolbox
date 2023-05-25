@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class ToolkitRepository {
+public class ToolkitRepository implements ToolService{
 
     private final List<Tool> tools;
 

@@ -55,14 +55,14 @@ public class ViewController {
         return "delete";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String update(@RequestParam("id") Long id) {
-        toolkitRepository.delete(id);
-        toolkitRepository.getTools().get(Math.toIntExact(id)).setName("aaaaaaaaa");
 
-        return "update";
-    }
-
+//    @RequestMapping(value = "/update", method = RequestMethod.POST)
+//    public String update(@RequestParam("id") Long id) {
+//        toolkitRepository.delete(id);
+//        toolkitRepository.getTools().get(Math.toIntExact(id)).setName("aaaaaaaaa");
+//
+//        return "update";
+//    }
 
 
     @GetMapping("/search")
@@ -78,8 +78,8 @@ public class ViewController {
     }
 
     @PostMapping("/create")
-    public String add(@RequestParam String name, @RequestParam float size, @RequestParam String unit,
-                      @RequestParam("actions") List<String> actions, Model model) {
+    public String create(@RequestParam String name, @RequestParam float size, @RequestParam String unit,
+                         @RequestParam("actions") List<String> actions, Model model) {
         Tool newTool = new Tool(name, new Tool.ToolSize(size, unit), actions);
         toolkitRepository.add(newTool);
         List<Tool> tools = toolkitRepository.getTools();
@@ -87,9 +87,16 @@ public class ViewController {
         return "create";
     }
 
-//    @PutMapping("/read/{id}")
-//    public Long update(@PathVariable("id") Long id, @RequestBody Tool updateTool) {
-//
-//    }
+    @PostMapping("/update")
+    public String update(@RequestParam String name, @RequestParam float size, @RequestParam String unit,
+                      @RequestParam("actions") List<String> actions, Model model) {
+        Tool newTool = new Tool(name, new Tool.ToolSize(size, unit), actions);
+        toolkitRepository.add(newTool);
+        List<Tool> tools = toolkitRepository.getTools();
+        model.addAttribute("tools", tools);
+        return "update";
+    }
+
+
 
 }
