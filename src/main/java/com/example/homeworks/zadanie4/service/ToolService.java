@@ -5,7 +5,7 @@ import com.example.homeworks.zadanie4.model.Tool;
 import java.util.List;
 
 public interface ToolService {
-    
+
     List<Tool> getTools();
 
     boolean isEmpty();
@@ -16,4 +16,7 @@ public interface ToolService {
 
     Long delete(Long id);
 
+    Tool findById(Long id);
+
+    boolean saveToolkit();
 }

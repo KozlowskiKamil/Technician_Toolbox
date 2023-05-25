@@ -14,13 +14,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class ToolkitRepository implements ToolService{
+public class ToolkitRepository implements ToolService {
 
     private final List<Tool> tools;
 
     public ToolkitRepository() {
         tools = readToolkit();
     }
+
     @Override
     public List<Tool> getTools() {
         return new ArrayList<>(tools);
@@ -53,6 +54,11 @@ public class ToolkitRepository implements ToolService{
         return id;
     }
 
+    @Override
+    public Tool findById(Long id) {
+        return tools.stream().filter(tool -> tool.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Did not find tool with id " + id));
+    }
+
     private List<Tool> readToolkit() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -66,7 +72,8 @@ public class ToolkitRepository implements ToolService{
         return Collections.emptyList();
     }
 
-    private boolean saveToolkit() {
+    @Override
+    public boolean saveToolkit() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             File file = new File("src/main/resources/toolkit.json");
@@ -79,5 +86,4 @@ public class ToolkitRepository implements ToolService{
             return false;
         }
     }
-
 }
