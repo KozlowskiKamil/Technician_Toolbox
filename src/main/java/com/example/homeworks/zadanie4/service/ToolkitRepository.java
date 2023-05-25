@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class ToolkitRepository {
+public class ToolkitRepository implements ToolService {
 
     private final List<Tool> tools;
 
@@ -22,15 +22,18 @@ public class ToolkitRepository {
         tools = readToolkit();
     }
 
+    @Override
     public List<Tool> getTools() {
         return new ArrayList<>(tools);
     }
 
     @JsonIgnore
+    @Override
     public boolean isEmpty() {
         return tools.isEmpty();
     }
 
+    @Override
     public boolean add(Tool tool) {
         int nextId = tools.size() + 1;
         tool.setId(Long.valueOf(nextId));
@@ -38,16 +41,22 @@ public class ToolkitRepository {
         return saveToolkit();
     }
 
+    @Override
     public List<Tool> findTool(String name) {
         List<Tool> findList = tools.stream().filter(tool -> tool.getName().toLowerCase().strip().contains(name.toLowerCase())).collect(Collectors.toList());
         return findList;
     }
 
-
+    @Override
     public Long delete(Long id) {
         tools.removeIf(s -> s.getId() == id);
         saveToolkit();
         return id;
+    }
+
+    @Override
+    public Tool findById(Long id) {
+        return tools.stream().filter(tool -> tool.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Did not find tool with id " + id));
     }
 
     private List<Tool> readToolkit() {
@@ -63,7 +72,8 @@ public class ToolkitRepository {
         return Collections.emptyList();
     }
 
-    private boolean saveToolkit() {
+    @Override
+    public boolean saveToolkit() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             File file = new File("src/main/resources/toolkit.json");
