@@ -11,61 +11,72 @@
 
 <body>
 
-<div class="container text-center ">
-    <nav class="navbar navbar-expand bg-body-tertiary">
-        <div class="container-fluid justify-content-center">
-            <a class="navbar-brand" href="/">Tool Box</a>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="create"><span class="span">C</span>reate</a>
-                    <a class="nav-link" href="read"><span class="span">R</span>ead</a>
-                    <a class="nav-link" href="update"><span class="span">U</span>pdate</a>
-                    <a class="nav-link" href="delete"><span class="span">D</span>elete</a>
-                    <a class="nav-link" href="search"><span class="span">S</span>earch</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <h1>Tool Box</h1>
-    <img src="/img/logo.jpg" style="max-width: 300px; margin-bottom: 30px">
-    <h3>Add new tool</h3>
-    <div class="row">
-        <div class="col d-flex justify-content-center">
-            <form action="/showFormForAddp" method="post" style="justify-content: center">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name">
-                </div>
-                <div class="mb-3">
-                    <label for="size" class="form-label">Size:</label>
-                    <input type="number" class="form-control" id="size" name="size" step="any">
-                </div>
-                <div class="mb-3">
-                    <label for="unit" class="form-label">Unit:</label>
-                    <input type="text" class="form-control" id="unit" name="unit">
-                </div>
-                <div id="actionInputs" class="mb-3">
-                    <label for="actions" class="form-label">Actions:</label>
-                    <input type="text" class="form-control" id="actions" name="actions" placeholder="Enter action">
-                </div>
-                <button type="button" class="btn btn-warning" onclick="addInput()">Add Action</button>
-                </br></br>
 
-                <button type="submit" class="btn btn-success mb-5 p-3">Add Tool</button>
-            </form>
-        </div>
-    </div>
-</div>
-<script>
-    function addInput() {
-        var input = document.createElement('input');
-        input.type = 'text';
-        input.name = 'actions';
-        input.placeholder = 'Enter action';
-        input.className = 'form-control mb-2';
-        document.getElementById('actionInputs').appendChild(input);
-    }
-</script>
+
+<form action="/updateTool" method="post">
+    <input type="hidden" name="id" value="10">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="number" name="size" placeholder="Size" required>
+    <input type="text" name="unit" placeholder="Unit" required>
+    <input type="text" name="actions" placeholder="Actions" required>
+    <button type="submit">Update Tool</button>
+</form>
+
+<!--<div class="container text-center ">-->
+<!--    <nav class="navbar navbar-expand bg-body-tertiary">-->
+<!--        <div class="container-fluid justify-content-center">-->
+<!--            <a class="navbar-brand" href="/">Tool Box</a>-->
+<!--            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">-->
+<!--                <div class="navbar-nav">-->
+<!--                    <a class="nav-link" href="create"><span class="span">C</span>reate</a>-->
+<!--                    <a class="nav-link" href="read"><span class="span">R</span>ead</a>-->
+<!--                    <a class="nav-link" href="update"><span class="span">U</span>pdate</a>-->
+<!--                    <a class="nav-link" href="delete"><span class="span">D</span>elete</a>-->
+<!--                    <a class="nav-link" href="search"><span class="span">S</span>earch</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--    <h1>Tool Box</h1>-->
+<!--    <img src="/img/logo.jpg" style="max-width: 300px; margin-bottom: 30px">-->
+<!--    <h3>Add new tool</h3>-->
+<!--    <div class="row">-->
+<!--        <div class="col d-flex justify-content-center">-->
+<!--            <form action="/showFormForAddp" method="post" style="justify-content: center">-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="name" class="form-label">Name:</label>-->
+<!--                    <input type="text" class="form-control" id="name" name="name">-->
+<!--                </div>-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="size" class="form-label">Size:</label>-->
+<!--                    <input type="number" class="form-control" id="size" name="size" step="any">-->
+<!--                </div>-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="unit" class="form-label">Unit:</label>-->
+<!--                    <input type="text" class="form-control" id="unit" name="unit">-->
+<!--                </div>-->
+<!--                <div id="actionInputs" class="mb-3">-->
+<!--                    <label for="actions" class="form-label">Actions:</label>-->
+<!--                    <input type="text" class="form-control" id="actions" name="actions" placeholder="Enter action">-->
+<!--                </div>-->
+<!--                <button type="button" class="btn btn-warning" onclick="addInput()">Add Action</button>-->
+<!--                </br></br>-->
+
+<!--                <button type="submit" class="btn btn-success mb-5 p-3">Add Tool</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<script>-->
+<!--    function addInput() {-->
+<!--        var input = document.createElement('input');-->
+<!--        input.type = 'text';-->
+<!--        input.name = 'actions';-->
+<!--        input.placeholder = 'Enter action';-->
+<!--        input.className = 'form-control mb-2';-->
+<!--        document.getElementById('actionInputs').appendChild(input);-->
+<!--    }-->
+<!--</script>-->
 
 
 <!--<div class="container">

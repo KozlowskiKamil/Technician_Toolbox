@@ -12,9 +12,19 @@
 
 <div class="container">
 
+    <form action="/updateTool" method="post">
+        <input type="hidden" name="id" value="10">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="number" name="size" placeholder="Size" required>
+        <input type="text" name="unit" placeholder="Unit" required>
+        <input type="text" name="actions" placeholder="Actions" required>
+        <button type="submit">Update Tool</button>
+    </form>
+
+
     <h3>Tool Box</h3>
     <hr>
-    <a th:href="@{/showFormForAdd}"
+    <a th:href="@{/updateTool}"
        class="btn btn-primary btn-sm mb-3">Add Tool</a>
     <table class="table table-bordered table-striped">
         <thead class="table-dark">

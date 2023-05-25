@@ -73,4 +73,17 @@ public class ViewController {
         return "search";
     }
 
+
+    @PostMapping("/updateTool")
+    public String updateTool(@RequestParam("id") Long id, @RequestParam("name") String name,
+                             @RequestParam("size") float size, @RequestParam("unit") String unit,
+                             @RequestParam("actions") List<String> actions) {
+        Tool existingTool = toolService.findById(id);
+        existingTool.setName(name);
+        existingTool.setToolSize(new Tool.ToolSize(size, unit));
+        existingTool.setActions(actions);
+        toolService.saveToolkit();
+        return "redirect:/read";
+    }
+
 }
