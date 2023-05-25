@@ -13,14 +13,14 @@
 
 
 
-<form action="/updateTool" method="post">
-    <input type="hidden" name="id" value="10">
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="number" name="size" placeholder="Size" required>
-    <input type="text" name="unit" placeholder="Unit" required>
-    <input type="text" name="actions" placeholder="Actions" required>
-    <button type="submit">Update Tool</button>
-</form>
+<!--<form action="/updateTool" method="post">-->
+<!--    <input type="hidden" name="id" value="10">-->
+<!--    <input type="text" name="name" placeholder="Name" required>-->
+<!--    <input type="number" name="size" placeholder="Size" required>-->
+<!--    <input type="text" name="unit" placeholder="Unit" required>-->
+<!--    <input type="text" name="actions" placeholder="Actions" required>-->
+<!--    <button type="submit">Update Tool</button>-->
+<!--</form>-->
 
 <!--<div class="container text-center ">-->
 <!--    <nav class="navbar navbar-expand bg-body-tertiary">-->
@@ -79,28 +79,40 @@
 <!--</script>-->
 
 
-<!--<div class="container">
-    <h3>Add New Tool</h3>
+<div class="container">
+    <h3>Update Tool</h3>
     <hr>
-    <p class="h4 mb-4">Save Tool</p>
-    <form action="#" th:action="@{/saveToolkit}" th:object="${tool}" method="post">
-        <input type="hidden" th:field="*{id}">
-        <input type="text" th:field="*{name}"
-               class="form-control mb-4 w-25" placeholder="Name">
-
-        <input type="number" th:field="*{toolSize}"
-               class="form-control mb-4 w-25" placeholder="Size">
-
-&lt;!&ndash;        <input type="text" th:field="*{toolSize.unit()}"&ndash;&gt;
-&lt;!&ndash;               class="form-control mb-4 w-25" placeholder="Unit">&ndash;&gt;
-
-        <button type="submit" class="btn btn-info col-2">Save</button>
-
+    <form action="/updateTool" method="post">
+        <input type="hidden" name="id" th:value="${tool.id}">
+        <input type="text" name="name" placeholder="Name" required>
+        <button type="submit">Update</button>
     </form>
-&lt;!&ndash;    <hr>&ndash;&gt;
-    <a th:href="@{/read}">Back to Tools List</a>
+</div>
 
-</div>-->
+
+
+<!--<div class="container">-->
+<!--    <h3>Add New Tool</h3>-->
+<!--    <hr>-->
+<!--    <p class="h4 mb-4">Save Tool</p>-->
+<!--    <form action="#" th:action="@{/saveToolkit}" th:object="${tool}" method="post">-->
+<!--        <input type="hidden" th:field="*{id}">-->
+<!--        <input type="text" th:field="*{name}"-->
+<!--               class="form-control mb-4 w-25" placeholder="Name">-->
+
+<!--&lt;!&ndash;        <input type="number" th:field="*{toolSize}"&ndash;&gt;-->
+<!--&lt;!&ndash;               class="form-control mb-4 w-25" placeholder="Size">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <input type="text" th:field="*{toolSize.unit()}"&ndash;&gt;-->
+<!--&lt;!&ndash;               class="form-control mb-4 w-25" placeholder="Unit">&ndash;&gt;-->
+
+<!--        <button type="submit" class="btn btn-info col-2">Save</button>-->
+
+<!--    </form>-->
+<!--&lt;!&ndash;    <hr>&ndash;&gt;-->
+<!--    <a th:href="@{/read}">Back to Tools List</a>-->
+
+<!--</div>-->
 
 </body>
 </html>
