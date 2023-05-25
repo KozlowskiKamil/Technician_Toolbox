@@ -81,7 +81,15 @@ public class ViewController {
         return "search";
     }
 
-
+    @PostMapping("/create")
+    public String add(@RequestParam String name, @RequestParam float size, @RequestParam String unit,
+                      @RequestParam("actions") List<String> actions, Model model) {
+        Tool newTool = new Tool(name, new Tool.ToolSize(size, unit), actions);
+        toolService.add(newTool);
+        List<Tool> tools = toolService.getTools();
+        model.addAttribute("tools", tools);
+        return "create";
+    }
 
 
 
