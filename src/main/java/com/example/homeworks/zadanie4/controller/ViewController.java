@@ -69,15 +69,15 @@ public class ViewController {
         return "create";
     }
 
-    @GetMapping("/u2/{id}")
+    @GetMapping("/update/{id}")
     String updateGet(@PathVariable("id") String id, Model model) {
         Long idL = Long.valueOf(id);
         ToolUpdateDTO toolUpdateDTO = toolService.findById(idL);
         model.addAttribute("toolUpdateDTO", toolUpdateDTO);
-        return "u2";
+        return "update";
     }
 
-    @PostMapping("/u2/{id}")
+    @PostMapping("/update/{id}")
     String updatePost(
             @PathVariable("id") String id,
             @RequestParam("actions") List<String> actions,
