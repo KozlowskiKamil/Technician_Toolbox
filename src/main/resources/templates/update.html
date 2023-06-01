@@ -33,19 +33,21 @@
         </nav>
         <br>
     </header>
+
+
     <div class="banner">
         <div>
             <img src="/img/logo2.png" alt="Banner Image" class="img-fluid">
             <table class="table table-bordered table-striped">
                 <thead class="table-dark">
-                <th style="text-align: center"><span>You can add any number of tools and actions for tools</span></th>
+                <th style="text-align: center"><span>You can edit any of tools and actions</span></th>
             </table>
         </div>
     </div>
-    <div class="row">
-        <div class="col-6">
 
-            <p class="h4 mb-4">Edit tool</p>
+    <div class="row">
+        <div class="col-6 pb-5 mb-5">
+            <p class="h4 mb-4" style="color: deepskyblue">Edit Tool</p>
             <form th:action="@{/update/{id}(id=*{id})}" method="post" th:object="${toolUpdateDTO}">
                 <label for="name" class="form-label">Name:</label>
                 <input th:field="*{name}" type="text" class="form-control mb-4 w-30" placeholder="Name" id="name" name="name" required>
@@ -59,7 +61,7 @@
                 <div id="actionInputs" class="mb-3">
                     <label for="actions" class="form-label">Actions:</label>
                     <input th:field="*{actions}" type="text" class="form-control mb-4 w-30" id="actions" name="actions"
-                           placeholder="Hand tool operations">
+                           placeholder="Hand tool operations" required>
                 </div>
                 <button type="button" class="btn btn-warning mb-3" onclick="addInput()">Add Action</button>
                 <br>

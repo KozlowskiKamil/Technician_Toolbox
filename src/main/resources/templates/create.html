@@ -5,34 +5,9 @@
 
 <body class="overflow-y-scroll">
 <div class="container">
-    <header>
-        <nav class="navbar navbar-expand bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Tool Box</a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/showFormForAdd}">Create</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/read}">Read</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://github.com/KozlowskiKamil">Contact</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search" th:action="@{/findTool}" method="post">
-                        <input name="name" class="form-control me-2" type="search" placeholder="Find tool...">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-        <br>
-    </header>
+
+    <header th:replace="~{/fragments::header}"></header>
+
     <div class="banner">
         <div>
             <img src="/img/logo2.png" alt="Banner Image" class="img-fluid">
@@ -42,24 +17,26 @@
             </table>
         </div>
     </div>
+
     <div class="row">
         <div class="col-6 pb-5 mb-5">
 
             <p class="h4 mb-4" style="color: deepskyblue">Add new Tool</p>
             <form action="/create" method="post">
                 <label for="name" class="form-label">Name:</label>
-                <input type="text" class="form-control mb-4 w-30" placeholder="Name" id="name" name="name">
+                <input type="text" class="form-control mb-4 w-30" placeholder="Name" id="name" name="name" required>
 
                 <label for="size" class="form-label">Size:</label>
-                <input type="number" class="form-control mb-4 w-30" placeholder="Size" id="size" name="size" step="any">
+                <input type="number" class="form-control mb-4 w-30" placeholder="Size" id="size" name="size" step="any"
+                       required>
 
                 <label for="unit" class="form-label">Unit:</label>
-                <input type="text" class="form-control mb-4 w-30" placeholder="Unit" id="unit" name="unit">
+                <input type="text" class="form-control mb-4 w-30" placeholder="Unit" id="unit" name="unit" required>
 
                 <div id="actionInputs" class="mb-3">
                     <label for="actions" class="form-label">Actions:</label>
                     <input type="text" class="form-control mb-4 w-30" id="actions" name="actions"
-                           placeholder="Hand tool operations">
+                           placeholder="Hand tool operations" required>
                 </div>
                 <button type="button" class="btn btn-warning mb-3" onclick="addInput()">Add Action</button>
                 <br>
