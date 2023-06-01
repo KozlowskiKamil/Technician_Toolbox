@@ -60,8 +60,7 @@ public class ViewController {
     }
 
     @PostMapping("/create")
-    public String add(@RequestParam String name, @RequestParam float size, @RequestParam String unit,
-                      @RequestParam("actions") List<String> actions, Model model) {
+    public String add(@RequestParam String name, @RequestParam float size, @RequestParam String unit, @RequestParam("actions") List<String> actions, Model model) {
         Tool newTool = new Tool(name, new Tool.ToolSize(size, unit), actions);
         toolService.add(newTool);
         List<Tool> tools = toolService.getTools();
@@ -78,10 +77,7 @@ public class ViewController {
     }
 
     @PostMapping("/update/{id}")
-    String updatePost(
-            @PathVariable("id") String id,
-            @RequestParam("actions") List<String> actions,
-            @ModelAttribute ToolUpdateDTO toolDto) {
+    String updatePost(@PathVariable("id") String id, @RequestParam("actions") List<String> actions, @ModelAttribute ToolUpdateDTO toolDto) {
         Long idL = Long.valueOf(id);
         toolService.delete(idL);
         Tool.ToolSize toolSize = new Tool.ToolSize(toolDto.getSize(), toolDto.getUnit());

@@ -3,12 +3,10 @@ package com.example.homeworks.zadanie4.model;
 import java.util.List;
 
 public class ToolUpdateDTO {
-    private Long id;
-    private String name;
-
     float size;
     String unit;
-
+    private Long id;
+    private String name;
     private List<String> actions;
 
     public ToolUpdateDTO(Long id, String name, float size, String unit, List<String> actions) {
