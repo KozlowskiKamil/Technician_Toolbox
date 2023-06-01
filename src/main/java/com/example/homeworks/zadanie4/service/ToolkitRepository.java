@@ -1,6 +1,7 @@
 package com.example.homeworks.zadanie4.service;
 
 import com.example.homeworks.zadanie4.model.Tool;
+import com.example.homeworks.zadanie4.model.ToolUpdateDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 @Repository
 public class ToolkitRepository implements ToolService {
 
-    private final List<Tool> tools;
+    private List<Tool> tools;
 
     public ToolkitRepository() {
         tools = readToolkit();
@@ -55,8 +56,9 @@ public class ToolkitRepository implements ToolService {
     }
 
     @Override
-    public Tool findById(Long id) {
-        return tools.stream().filter(tool -> tool.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Did not find tool with id " + id));
+    public ToolUpdateDTO findById(Long id) {
+        Tool tool = tools.stream().filter(tooll -> tooll.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Did not find tool with id " + id));
+        return new ToolUpdateDTO(tool.getId(), tool.getName(), tool.getToolSize().size(), tool.getToolSize().unit(), tool.getActions());
     }
 
     private List<Tool> readToolkit() {

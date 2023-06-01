@@ -1,13 +1,12 @@
 package com.example.homeworks.zadanie4.controller;
 
 import com.example.homeworks.zadanie4.model.Tool;
+import com.example.homeworks.zadanie4.model.ToolUpdateDTO;
 import com.example.homeworks.zadanie4.service.ToolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class ViewController {
 
     List<Tool> searchTool;
 
-    @Autowired // Dodaję aby było wiadomo gdzie jest DI choć wiadomo, że nie jest wymagana przy konstruktorze
+    @Autowired // Dodaję aby pokazać gdzie jest DI choć wiadomo, że nie jest wymagana przy konstruktorze
     public ViewController(ToolService toolService) {
         this.toolService = toolService;
     }
@@ -35,32 +34,11 @@ public class ViewController {
         return "read";
     }
 
-    @PostMapping("/showFormForAddp")
-    public String showFormForAddp(Model model) {
-        Tool theTool = new Tool();
-        model.addAttribute("tool", theTool);
-        return "create";
-    }
     @GetMapping("/showFormForAdd")
     public String showFormForAdd(Model model) {
         Tool theTool = new Tool();
         model.addAttribute("tool", theTool);
         return "create";
-    }
-
-    @GetMapping("/showFormForUpdate")
-    public String showFormForUpdate(@RequestParam("id") Long id, Model theModel) {
-        Tool tool = toolService.findById(id);
-        theModel.addAttribute("tool", tool);
-        return "create";
-    }
-
-    @PostMapping("/updateTool")
-    public String updateTool(@RequestParam("id") Long id, @RequestParam("name") String name) {
-        Tool existingTool = toolService.findById(id);
-        existingTool.setName(name);
-        toolService.saveToolkit();
-        return "redirect:/read";
     }
 
     @GetMapping("/delete")
@@ -82,8 +60,7 @@ public class ViewController {
     }
 
     @PostMapping("/create")
-    public String add(@RequestParam String name, @RequestParam float size, @RequestParam String unit,
-                      @RequestParam("actions") List<String> actions, Model model) {
+    public String add(@RequestParam String name, @RequestParam float size, @RequestParam String unit, @RequestParam("actions") List<String> actions, Model model) {
         Tool newTool = new Tool(name, new Tool.ToolSize(size, unit), actions);
         toolService.add(newTool);
         List<Tool> tools = toolService.getTools();
@@ -91,15 +68,22 @@ public class ViewController {
         return "create";
     }
 
-//    @PostMapping("/updateTool")
-//    public String updateTool(@RequestParam("id") Long id, @RequestParam("name") String name,
-//                             @RequestParam("size") float size, @RequestParam("unit") String unit,
-//                             @RequestParam("actions") List<String> actions) {
-//        Tool existingTool = toolService.findById(id);
-//        existingTool.setName(name);
-//        existingTool.setToolSize(new Tool.ToolSize(size, unit));
-//        existingTool.setActions(actions);
-//        toolService.saveToolkit();
-//        return "redirect:/read";
-//    }
+    @GetMapping("/update/{id}")
+    String updateGet(@PathVariable("id") String id, Model model) {
+        Long idL = Long.valueOf(id);
+        ToolUpdateDTO toolUpdateDTO = toolService.findById(idL);
+        model.addAttribute("toolUpdateDTO", toolUpdateDTO);
+        return "update";
+    }
+
+    @PostMapping("/update/{id}")
+    String updatePost(@PathVariable("id") String id, @RequestParam("actions") List<String> actions, @ModelAttribute ToolUpdateDTO toolDto) {
+        Long idL = Long.valueOf(id);
+        toolService.delete(idL);
+        Tool.ToolSize toolSize = new Tool.ToolSize(toolDto.getSize(), toolDto.getUnit());
+        Tool tool = new Tool(toolDto.getName(), toolSize, actions);
+        toolService.add(tool);
+        return "redirect:/read";
+    }
+
 }

@@ -10,34 +10,34 @@
 </head>
 <body class="overflow-y-scroll">
 <div class="container">
-<header>
-    <nav class="navbar navbar-expand bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Tool Box</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/showFormForAdd}">Create</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/read}">Read</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/KozlowskiKamil">Contact</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search" th:action="@{/findTool}" method="post">
-                    <input name="name" class="form-control me-2" type="search" placeholder="Find tool...">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+    <header>
+        <nav class="navbar navbar-expand bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Tool Box</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/showFormForAdd}">Create</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/read}">Read</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/KozlowskiKamil">Contact</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search" th:action="@{/findTool}" method="post">
+                        <input name="name" class="form-control me-2" type="search" placeholder="Find tool...">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </nav>
-    <br>
-</header>
+        </nav>
+        <br>
+    </header>
     <div class="banner">
         <img src="/img/logo2.png" alt="Banner Image" class="img-fluid">
     </div>
@@ -54,7 +54,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="tool : ${tools}">
+                <tr th:each="tool : ${tools}" th:object="${tool}">
                     <td th:text="${tool.id}"/>
                     <td th:text="${tool.name}"/>
                     <td th:text="${tool.toolSize.size} + ' ' + ${tool.toolSize.unit}"/>
@@ -64,7 +64,7 @@
                         </ul>
                     </td>
                     <td>
-                        <a th:href="@{/showFormForUpdate(id=${tool.id})}" class="btn btn-info btn-sm">Update</a>
+                        <a th:href="@{/update/{id}(id=*{id})}" class="btn btn-info btn-sm">Update</a>
                         <a th:href="@{/delete(id=${tool.id})}" class="btn btn-danger btn-sm ms-2" onclick="if (!(confirm('Are you sure you want to delete this tool?'))) return false">Delete</a>
                     </td>
                 </tr>
@@ -78,6 +78,6 @@
         <span class="text-muted">&copy;Kamil Kozłowski JJDZR11-HOMEWORKS TASK 4 </span>
     </div>
 </footer>
+
 </body>
 </html>
-

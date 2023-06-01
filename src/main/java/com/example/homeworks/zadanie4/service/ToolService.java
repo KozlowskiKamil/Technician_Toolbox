@@ -1,6 +1,7 @@
 package com.example.homeworks.zadanie4.service;
 
 import com.example.homeworks.zadanie4.model.Tool;
+import com.example.homeworks.zadanie4.model.ToolUpdateDTO;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface ToolService {
 
     Long delete(Long id);
 
-    Tool findById(Long id);
+    ToolUpdateDTO findById(Long id);
 
     boolean saveToolkit();
 }
