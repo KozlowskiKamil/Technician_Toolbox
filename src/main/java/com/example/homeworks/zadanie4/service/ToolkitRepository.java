@@ -12,12 +12,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.logging.Logger;
 
 @Repository
 public class ToolkitRepository implements ToolService {
 
     private final List<Tool> tools;
+    private static final Logger LOGGER = Logger.getLogger(ToolkitRepository.class.getName());
 
     public ToolkitRepository() {
         tools = readToolkit();
@@ -37,32 +38,31 @@ public class ToolkitRepository implements ToolService {
     @Override
     public boolean add(Tool tool) {
         int nextId = tools.size() + 1;
-        tool.setId(Long.valueOf(nextId));
+        tool.setId((long) nextId);
         tools.add(tool);
         return saveToolkit();
     }
 
     @Override
     public List<Tool> findTool(String name) {
-        List<Tool> toolList = tools.stream().filter(tool -> tool.getName().toLowerCase().strip().contains(name.toLowerCase())).collect(Collectors.toList());
+        List<Tool> toolList = tools.stream().filter(tool -> tool.getName().toLowerCase().strip().contains(name.toLowerCase())).toList();
         if (toolList.isEmpty()) {
             List<Tool> toolEmpty = new ArrayList<>();
-            toolEmpty.add(new Tool("No matching objects found.",(new Tool.ToolSize(0, "N/A")),(new ArrayList<>(List.of("N/A")))));
+            toolEmpty.add(new Tool("No matching objects found.", (new Tool.ToolSize(0, "N/A")), (new ArrayList<>(List.of("N/A")))));
             return toolEmpty;
         }
         return toolList;
     }
 
     @Override
-    public Long delete(Long id) {
+    public void delete(Long id) {
         tools.removeIf(s -> s.getId().equals(id));
         saveToolkit();
-        return id;
     }
 
     @Override
     public ToolUpdateDTO findById(Long id) {
-        Tool tool = tools.stream().filter(tooll -> tooll.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Did not find tool with id " + id));
+        Tool tool = tools.stream().filter(t -> t.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Did not find tool with id " + id));
         return new ToolUpdateDTO(tool.getId(), tool.getName(), tool.getToolSize().size(), tool.getToolSize().unit(), tool.getActions());
     }
 
@@ -85,10 +85,10 @@ public class ToolkitRepository implements ToolService {
             ObjectMapper objectMapper = new ObjectMapper();
             File file = new File("src/main/resources/toolkit.json");
             objectMapper.writeValue(file, tools);
-            System.out.println("------\nTool saved correctly\n------");
+            LOGGER.info("------Tool saved correctly------");
             return true;
         } catch (IOException e) {
-            System.out.println("------\nTool not saved error\n------");
+            LOGGER.info("------Tool not saved error------");
             e.printStackTrace();
             return false;
         }

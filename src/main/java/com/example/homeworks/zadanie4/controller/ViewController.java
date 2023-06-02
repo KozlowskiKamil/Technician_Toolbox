@@ -27,36 +27,11 @@ public class ViewController {
         return "index";
     }
 
-    @GetMapping("/read")
-    public String getTools(Model model) {
-        List<Tool> tools = toolService.getTools();
-        model.addAttribute("tools", tools);
-        return "read";
-    }
-
     @GetMapping("/showFormForAdd")
     public String showFormForAdd(Model model) {
         Tool theTool = new Tool();
         model.addAttribute("tool", theTool);
         return "create";
-    }
-
-    @GetMapping("/delete")
-    public String delete(@RequestParam("id") Long id) {
-        toolService.delete(id);
-        return "redirect:/read";
-    }
-
-    @GetMapping("/search")
-    public String search() {
-        return "search";
-    }
-
-    @PostMapping("/findTool")
-    public String findTool(@RequestParam("name") String name, Model model) {
-        searchTool = toolService.findTool(name);
-        model.addAttribute("searchResults", searchTool);
-        return "search";
     }
 
     @PostMapping("/create")
@@ -66,6 +41,13 @@ public class ViewController {
         List<Tool> tools = toolService.getTools();
         model.addAttribute("tools", tools);
         return "create";
+    }
+
+    @GetMapping("/read")
+    public String getTools(Model model) {
+        List<Tool> tools = toolService.getTools();
+        model.addAttribute("tools", tools);
+        return "read";
     }
 
     @GetMapping("/update/{id}")
@@ -84,6 +66,24 @@ public class ViewController {
         Tool tool = new Tool(toolDto.getName(), toolSize, actions);
         toolService.add(tool);
         return "redirect:/read";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") Long id) {
+        toolService.delete(id);
+        return "redirect:/read";
+    }
+
+    @GetMapping("/search")
+    public String search() {
+        return "search";
+    }
+
+    @PostMapping("/findTool")
+    public String findTool(@RequestParam("name") String name, Model model) {
+        searchTool = toolService.findTool(name);
+        model.addAttribute("searchResults", searchTool);
+        return "search";
     }
 
 }

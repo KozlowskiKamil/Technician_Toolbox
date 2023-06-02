@@ -7,7 +7,7 @@ public class ToolUpdateDTO {
     String unit;
     private Long id;
     private String name;
-    private List<String> actions;
+    private final List<String> actions;
 
     public ToolUpdateDTO(Long id, String name, float size, String unit, List<String> actions) {
         this.id = id;
@@ -37,24 +37,13 @@ public class ToolUpdateDTO {
         return size;
     }
 
-    public void setSize(float size) {
-        this.size = size;
-    }
 
     public String getUnit() {
         return unit;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
     public List<String> getActions() {
         return actions;
-    }
-
-    public void setActions(List<String> actions) {
-        this.actions = actions;
     }
 
 }

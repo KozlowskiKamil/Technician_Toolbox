@@ -15,7 +15,7 @@ public interface ToolService {
 
     List<Tool> findTool(String name);
 
-    Long delete(Long id);
+    void delete(Long id);
 
     ToolUpdateDTO findById(Long id);
 
