@@ -49,6 +49,8 @@
         <div class="col-6 pb-5 mb-5">
             <p class="h4 mb-4" style="color: deepskyblue">Edit Tool</p>
             <form th:action="@{/update/{id}(id=*{id})}" method="post" th:object="${toolUpdateDTO}">
+                <input th:field="*{img}" type="text" id="img" name="img" required>
+
                 <label for="name" class="form-label">Name:</label>
                 <input th:field="*{name}" type="text" class="form-control mb-4 w-30" placeholder="Name" id="name" name="name" required>
 
