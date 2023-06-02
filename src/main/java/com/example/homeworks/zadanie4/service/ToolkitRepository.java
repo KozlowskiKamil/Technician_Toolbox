@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Repository
 public class ToolkitRepository implements ToolService {
 
-    private List<Tool> tools;
+    private final List<Tool> tools;
 
     public ToolkitRepository() {
         tools = readToolkit();
@@ -44,13 +44,12 @@ public class ToolkitRepository implements ToolService {
 
     @Override
     public List<Tool> findTool(String name) {
-        List<Tool> findList = tools.stream().filter(tool -> tool.getName().toLowerCase().strip().contains(name.toLowerCase())).collect(Collectors.toList());
-        return findList;
+        return tools.stream().filter(tool -> tool.getName().toLowerCase().strip().contains(name.toLowerCase())).collect(Collectors.toList());
     }
 
     @Override
     public Long delete(Long id) {
-        tools.removeIf(s -> s.getId() == id);
+        tools.removeIf(s -> s.getId().equals(id));
         saveToolkit();
         return id;
     }

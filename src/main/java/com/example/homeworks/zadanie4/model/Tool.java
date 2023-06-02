@@ -34,10 +34,6 @@ public class Tool {
         return actions;
     }
 
-    public void setActions(List<String> actions) {
-        this.actions = actions;
-    }
-
     public void addAction(String action) {
         if (this.actions == null) {
             this.actions = new ArrayList<>();
@@ -55,10 +51,6 @@ public class Tool {
 
     public ToolSize getToolSize() {
         return toolSize;
-    }
-
-    public void setToolSize(ToolSize toolSize) {
-        this.toolSize = toolSize;
     }
 
     public record ToolSize(float size, String unit) {

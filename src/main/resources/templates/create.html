@@ -27,7 +27,7 @@
                 <input type="text" class="form-control mb-4 w-30" placeholder="Name" id="name" name="name" required>
 
                 <label for="size" class="form-label">Size:</label>
-                <input type="number" class="form-control mb-4 w-30" placeholder="Size" id="size" name="size" step="any"
+                <input type="number" class="form-control mb-4 w-30" placeholder="Size" id="size" name="size" step="any" min="0"
                        required>
 
                 <label for="unit" class="form-label">Unit:</label>
@@ -59,7 +59,6 @@
         </div>
 
     </div>
-</div>
 </div>
 
 <footer th:replace="~{/fragments::footer}"></footer>

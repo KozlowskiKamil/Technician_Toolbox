@@ -51,12 +51,7 @@ public class ToolkitApp {
     }
 
     private static void showOptions() {
-        System.out.println("Menu options\n"
-                + SHOW_ALL + " - show all tools\n"
-                + FIND_TOOL + " - find tool by name\n"
-                + ADD_TOOL + " - add new tool\n"
-                + COUNT_TOOL + " - count tools in the box\n"
-                + EXIT + " - exit");
+        System.out.println("Menu options\n" + SHOW_ALL + " - show all tools\n" + FIND_TOOL + " - find tool by name\n" + ADD_TOOL + " - add new tool\n" + COUNT_TOOL + " - count tools in the box\n" + EXIT + " - exit");
     }
 
     private static int readOption(Scanner scanner) {
@@ -73,8 +68,7 @@ public class ToolkitApp {
     }
 
     private static void showTool(Tool tool) {
-        System.out.println("---\n" + tool.getName() + " | Tool actions: " + tool.getActions()
-                + "\nSize: " + tool.getToolSize().size() + " " + tool.getToolSize().unit());
+        System.out.println("---\n" + tool.getName() + " | Tool actions: " + tool.getActions() + "\nSize: " + tool.getToolSize().size() + " " + tool.getToolSize().unit());
     }
 
     private static void findTool(ToolkitRepository toolkitRepository) {
