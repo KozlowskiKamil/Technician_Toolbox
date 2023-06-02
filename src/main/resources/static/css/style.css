@@ -15,3 +15,7 @@ body {
 .navbar {
     margin-bottom: -40px;
 }
+
+.custom-table {
+    font-size: 70px;
+}

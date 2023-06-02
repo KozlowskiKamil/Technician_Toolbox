@@ -1,5 +1,6 @@
 package com.example.homeworks.zadanie4.model;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class ToolUpdateDTO {
@@ -8,13 +9,15 @@ public class ToolUpdateDTO {
     private Long id;
     private String name;
     private final List<String> actions;
+    private Path img;
 
-    public ToolUpdateDTO(Long id, String name, float size, String unit, List<String> actions) {
+    public ToolUpdateDTO(Long id, String name, float size, String unit, List<String> actions, Path img) {
         this.id = id;
         this.name = name;
         this.size = size;
         this.unit = unit;
         this.actions = actions;
+        this.img = img;
     }
 
     public Long getId() {
@@ -44,6 +47,11 @@ public class ToolUpdateDTO {
 
     public List<String> getActions() {
         return actions;
+    }
+
+
+    public Path getImg() {
+        return img;
     }
 
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -48,7 +49,7 @@ public class ToolkitRepository implements ToolService {
         List<Tool> toolList = tools.stream().filter(tool -> tool.getName().toLowerCase().strip().contains(name.toLowerCase())).toList();
         if (toolList.isEmpty()) {
             List<Tool> toolEmpty = new ArrayList<>();
-            toolEmpty.add(new Tool("No matching objects found.", (new Tool.ToolSize(0, "N/A")), (new ArrayList<>(List.of("N/A")))));
+            toolEmpty.add(new Tool("No matching objects found.", (new Tool.ToolSize(0, "N/A")), (new ArrayList<>(List.of("N/A"))), Path.of("")));
             return toolEmpty;
         }
         return toolList;
@@ -63,7 +64,7 @@ public class ToolkitRepository implements ToolService {
     @Override
     public ToolUpdateDTO findById(Long id) {
         Tool tool = tools.stream().filter(t -> t.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Did not find tool with id " + id));
-        return new ToolUpdateDTO(tool.getId(), tool.getName(), tool.getToolSize().size(), tool.getToolSize().unit(), tool.getActions());
+        return new ToolUpdateDTO(tool.getId(), tool.getName(), tool.getToolSize().size(), tool.getToolSize().unit(), tool.getActions(), tool.getImg());
     }
 
     private List<Tool> readToolkit() {

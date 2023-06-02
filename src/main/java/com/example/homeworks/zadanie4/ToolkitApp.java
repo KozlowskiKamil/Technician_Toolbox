@@ -1,3 +1,4 @@
+/*
 package com.example.homeworks.zadanie4;
 
 import com.example.homeworks.zadanie4.model.Tool;
@@ -94,7 +95,7 @@ public class ToolkitApp {
         scanner.nextLine();
         System.out.println("Add a tool unit");
         String addUnit = getString(scanner);
-        Tool newTool = new Tool(addName, new Tool.ToolSize(addSize, addUnit), new ArrayList<>());
+        Tool newTool = new Tool(addName, new Tool.ToolSize(addSize, addUnit), new ArrayList<>(), img);
         boolean addActions = false;
         while (!addActions) {
             System.out.println("Add a tool action (or type 'done' to finish)");
@@ -121,4 +122,4 @@ public class ToolkitApp {
         }
         return addString;
     }
-}
+}*/

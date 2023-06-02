@@ -2,6 +2,7 @@ package com.example.homeworks.zadanie4.model;
 
 import org.springframework.stereotype.Component;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,15 +12,17 @@ public class Tool {
     private String name;
     private ToolSize toolSize;
     private List<String> actions;
+    private Path img;
 
     @SuppressWarnings("Needed to load json file")
     public Tool() {
     }
 
-    public Tool(String name, ToolSize size, List<String> actions) {
+    public Tool(String name, ToolSize size, List<String> actions, Path img) {
         this.name = name;
         this.toolSize = size;
         this.actions = actions;
+        this.img = img;
     }
 
     public Long getId() {
@@ -54,5 +57,9 @@ public class Tool {
     }
 
     public record ToolSize(float size, String unit) {
+    }
+
+    public Path getImg() {
+        return img;
     }
 }

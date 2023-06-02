@@ -38,7 +38,7 @@
     <div class="banner">
         <div>
             <img src="/img/logo2.png" alt="Banner Image" class="img-fluid">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped" style="font-size: larger">
                 <thead class="table-dark">
                 <th style="text-align: center"><span>You can edit any of tools and actions</span></th>
             </table>
@@ -49,6 +49,8 @@
         <div class="col-6 pb-5 mb-5">
             <p class="h4 mb-4" style="color: deepskyblue">Edit Tool</p>
             <form th:action="@{/update/{id}(id=*{id})}" method="post" th:object="${toolUpdateDTO}">
+                <input th:field="*{img}" type="text" id="img" name="img" required>
+
                 <label for="name" class="form-label">Name:</label>
                 <input th:field="*{name}" type="text" class="form-control mb-4 w-30" placeholder="Name" id="name" name="name" required>
 
