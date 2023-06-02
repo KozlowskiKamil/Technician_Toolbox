@@ -44,7 +44,13 @@ public class ToolkitRepository implements ToolService {
 
     @Override
     public List<Tool> findTool(String name) {
-        return tools.stream().filter(tool -> tool.getName().toLowerCase().strip().contains(name.toLowerCase())).collect(Collectors.toList());
+        List<Tool> toolList = tools.stream().filter(tool -> tool.getName().toLowerCase().strip().contains(name.toLowerCase())).collect(Collectors.toList());
+        if (toolList.isEmpty()) {
+            List<Tool> toolEmpty = new ArrayList<>();
+            toolEmpty.add(new Tool("No matching objects found.",(new Tool.ToolSize(0, "N/A")),(new ArrayList<>(List.of("N/A")))));
+            return toolEmpty;
+        }
+        return toolList;
     }
 
     @Override
