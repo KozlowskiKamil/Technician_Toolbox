@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.util.List;
 
 @Controller
@@ -36,7 +37,7 @@ public class ViewController {
 
     @PostMapping("/create")
     public String add(@RequestParam String name, @RequestParam float size, @RequestParam String unit, @RequestParam("actions") List<String> actions, Model model) {
-        Tool newTool = new Tool(name, new Tool.ToolSize(size, unit), actions);
+        Tool newTool = new Tool(name, new Tool.ToolSize(size, unit), actions, Path.of("/img/noImg.png"));
         toolService.add(newTool);
         List<Tool> tools = toolService.getTools();
         model.addAttribute("tools", tools);
@@ -63,7 +64,7 @@ public class ViewController {
         Long idL = Long.valueOf(id);
         toolService.delete(idL);
         Tool.ToolSize toolSize = new Tool.ToolSize(toolDto.getSize(), toolDto.getUnit());
-        Tool tool = new Tool(toolDto.getName(), toolSize, actions);
+        Tool tool = new Tool(toolDto.getName(), toolSize, actions, Path.of("/img/noImg.png"));
         toolService.add(tool);
         return "redirect:/read";
     }

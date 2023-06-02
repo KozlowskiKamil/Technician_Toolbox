@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:font-size="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,18 +25,22 @@
     <div class="row">
         <div class="col pb-5 mb-5">
             <table class="table table-bordered table-striped">
-                <thead class="table-dark">
+                <thead class="table-dark" style="font-size: larger">
                 <tr>
                     <th>Id</th>
+                    <th>Img</th>
                     <th>Search Tolls Name</th>
                     <th>Size</th>
                     <th>Hand tool operations</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody style="font-size: larger">
                 <tr th:each="tool : ${searchResults}">
                     <td th:text="${tool.id}"/>
+                    <td style="display: flex; justify-content: center; align-items: center;">
+                        <img th:src="${tool.img}" alt="Tool Image" style="max-height: 100px;">
+                    </td>
                     <td th:text="${tool.name}"/>
                     <td th:text="${tool.toolSize.size} + ' ' + ${tool.toolSize.unit}"/>
                     <td>
