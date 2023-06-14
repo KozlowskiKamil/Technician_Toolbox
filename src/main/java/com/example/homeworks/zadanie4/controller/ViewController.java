@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -47,6 +48,7 @@ public class ViewController {
     @GetMapping("/read")
     public String getTools(Model model) {
         List<Tool> tools = toolService.getTools();
+        tools.sort(Comparator.comparing(Tool::getId));
         model.addAttribute("tools", tools);
         return "read";
     }
