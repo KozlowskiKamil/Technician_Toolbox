@@ -13,6 +13,8 @@ public interface ToolService {
 
     boolean add(Tool tool);
 
+    boolean edit(Tool tool, Long idL);
+
     List<Tool> findTool(String name);
 
     void delete(Long id);

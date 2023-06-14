@@ -45,6 +45,13 @@ public class ToolkitRepository implements ToolService {
     }
 
     @Override
+    public boolean edit(Tool tool, Long idL) {
+        tool.setId(idL);
+        tools.add(tool);
+        return saveToolkit();
+    }
+
+    @Override
     public List<Tool> findTool(String name) {
         List<Tool> toolList = tools.stream().filter(tool -> tool.getName().toLowerCase().strip().contains(name.toLowerCase())).toList();
         if (toolList.isEmpty()) {

@@ -65,7 +65,7 @@ public class ViewController {
         toolService.delete(idL);
         Tool.ToolSize toolSize = new Tool.ToolSize(toolDto.getSize(), toolDto.getUnit());
         Tool tool = new Tool(toolDto.getName(), toolSize, actions, toolDto.getImg());
-        toolService.add(tool);
+        toolService.edit(tool, idL);
         return "redirect:/read";
     }
 
