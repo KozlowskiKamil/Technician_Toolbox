@@ -19,7 +19,7 @@ public class ViewController {
 
     List<Tool> searchTool;
 
-    @Autowired // Dodaję aby pokazać gdzie jest DI choć wiadomo, że nie jest wymagana przy konstruktorze
+    @Autowired
     public ViewController(ToolService toolService) {
         this.toolService = toolService;
     }
