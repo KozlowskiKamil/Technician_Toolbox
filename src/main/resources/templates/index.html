@@ -16,6 +16,7 @@
                     <th>Id</th>
                     <th>Img</th>
                     <th>All Tolls Name</th>
+                    <th>Storage location</th>
                     <th>Size</th>
                     <th>Hand tool operations</th>
                     <th>Actions</th>
@@ -28,6 +29,7 @@
                         <img th:src="${tool.img}" alt="Tool Image" style="max-height: 100px;">
                     </td>
                     <td th:text="${tool.name}"/>
+                    <td th:text="${tool.location}"/>
                     <td th:text="${tool.toolSize.size} + ' ' + ${tool.toolSize.unit}"/>
                     <td>
                         <ul style="list-style-type: none">

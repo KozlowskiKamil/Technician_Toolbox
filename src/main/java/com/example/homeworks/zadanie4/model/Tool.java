@@ -19,18 +19,10 @@ public class Tool {
     public Tool() {
     }
 
-    public Tool(String name, ToolSize size, List<String> actions, Path img) {
-        this.name = name;
-        this.toolSize = size;
-        this.actions = actions;
-        this.img = img;
-    }
-
-    public Tool(Long id, String name, String location, ToolSize toolSize, List<String> actions, Path img) {
-        this.id = id;
+    public Tool(String name, String location, ToolSize size, List<String> actions, Path img) {
         this.name = name;
         this.location = location;
-        this.toolSize = toolSize;
+        this.toolSize = size;
         this.actions = actions;
         this.img = img;
     }

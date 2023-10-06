@@ -12,22 +12,13 @@ public class ToolUpdateDTO {
     private String name;
     private Path img;
 
-    public ToolUpdateDTO(Long id, String name, float size, String unit, List<String> actions, Path img) {
+    public ToolUpdateDTO(Long id, String name, String location, float size, String unit, List<String> actions, Path img) {
         this.id = id;
         this.name = name;
-        this.size = size;
-        this.unit = unit;
-        this.actions = actions;
-        this.img = img;
-    }
-
-    public ToolUpdateDTO(List<String> actions, float size, String unit, String location, Long id, String name, Path img) {
-        this.actions = actions;
-        this.size = size;
-        this.unit = unit;
         this.location = location;
-        this.id = id;
-        this.name = name;
+        this.size = size;
+        this.unit = unit;
+        this.actions = actions;
         this.img = img;
     }
 

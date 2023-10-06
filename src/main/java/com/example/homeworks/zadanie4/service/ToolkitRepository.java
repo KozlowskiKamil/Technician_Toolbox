@@ -56,7 +56,7 @@ public class ToolkitRepository implements ToolService {
         List<Tool> toolList = tools.stream().filter(tool -> tool.getName().toLowerCase().strip().contains(name.toLowerCase())).toList();
         if (toolList.isEmpty()) {
             List<Tool> toolEmpty = new ArrayList<>();
-            toolEmpty.add(new Tool("No matching objects found.", (new Tool.ToolSize(0, "N/A")), (new ArrayList<>(List.of("N/A"))), Path.of("")));
+            toolEmpty.add(new Tool("No matching objects found.", "", (new Tool.ToolSize(0, "N/A")), (new ArrayList<>(List.of("N/A"))), Path.of("")));
             return toolEmpty;
         }
         return toolList;
@@ -71,7 +71,7 @@ public class ToolkitRepository implements ToolService {
     @Override
     public ToolUpdateDTO findById(Long id) {
         Tool tool = tools.stream().filter(t -> t.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Did not find tool with id " + id));
-        return new ToolUpdateDTO(tool.getId(), tool.getName(), tool.getToolSize().size(),
+        return new ToolUpdateDTO(tool.getId(), tool.getName(), tool.getLocation(), tool.getToolSize().size(),
                 tool.getToolSize().unit(), tool.getActions(), tool.getImg());
     }
 
