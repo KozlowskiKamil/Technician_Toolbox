@@ -9,26 +9,20 @@
 </head>
 <footer th:fragment="footer" class="footer">
     <div class="container">
-        <span class="text-muted">&copy;Kamil Kozłowski JJDZR11-HOMEWORKS TASK 4 </span>
+        <span class="text-muted">&copy;Kamil Kozłowski</span>
     </div>
 </footer>
 <header th:fragment="header">
     <nav class="navbar navbar-expand bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Tool Box</a>
+            <a class="navbar-brand" th:href="@{/read}">Tool Box</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" th:href="@{/showFormForAdd}">Add tool</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/showFormForAdd}">Create</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/read}">Read</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/KozlowskiKamil">Contact</a>
+                        <a class="nav-link" href="https://kozlowskikamil.github.io">Contact</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search" th:action="@{/findTool}" method="post">
