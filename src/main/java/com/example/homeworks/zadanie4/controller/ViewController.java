@@ -51,7 +51,7 @@ public class ViewController {
         List<Tool> tools = toolService.getTools();
         tools.sort(Comparator.comparing(Tool::getId));
         model.addAttribute("tools", tools);
-        return "read";
+        return "index";
     }
 
     @GetMapping("/update/{id}")
