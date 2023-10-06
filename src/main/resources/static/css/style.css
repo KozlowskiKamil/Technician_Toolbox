@@ -1,5 +1,5 @@
 body {
-    padding-bottom: 30px; /* Dodatkowy padding na dole strony, aby stopka nie zasłaniała zawartości */
+    padding-bottom: 30px;
 }
 
 .footer {
@@ -12,6 +12,7 @@ body {
     text-align: center;
     padding: 10px 0;
 }
+
 .navbar {
     margin-bottom: -40px;
 }

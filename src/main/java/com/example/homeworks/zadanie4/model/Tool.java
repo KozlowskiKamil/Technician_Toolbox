@@ -56,11 +56,10 @@ public class Tool {
         return toolSize;
     }
 
-    public record ToolSize(float size, String unit) {
-    }
-
     public Path getImg() {
         return img;
     }
 
+    public record ToolSize(float size, String unit) {
+    }
 }

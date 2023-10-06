@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="~{/fragments::head}"></head>
-
 <body class="overflow-y-scroll">
 <div class="container">
-
     <header th:replace="~{/fragments::header}"></header>
-
     <div class="banner">
         <div>
             <img src="/img/logo2.png" alt="Banner Image" class="img-fluid">
@@ -17,22 +13,18 @@
             </table>
         </div>
     </div>
-
     <div class="row">
         <div class="col-6 pb-5 mb-5">
-
             <p class="h4 mb-4" style="color: deepskyblue">Add new Tool</p>
             <form action="/create" method="post">
                 <label for="name" class="form-label">Name:</label>
                 <input type="text" class="form-control mb-4 w-30" placeholder="Name" id="name" name="name" required>
-
                 <label for="size" class="form-label">Size:</label>
-                <input type="number" class="form-control mb-4 w-30" placeholder="Size" id="size" name="size" step="any" min="0"
+                <input type="number" class="form-control mb-4 w-30" placeholder="Size" id="size" name="size" step="any"
+                       min="0"
                        required>
-
                 <label for="unit" class="form-label">Unit:</label>
                 <input type="text" class="form-control mb-4 w-30" placeholder="Unit" id="unit" name="unit" required>
-
                 <div id="actionInputs" class="mb-3">
                     <label for="actions" class="form-label">Actions:</label>
                     <input type="text" class="form-control mb-4 w-30" id="actions" name="actions"
@@ -43,7 +35,6 @@
                 <button type="submit" class="btn btn-info col-2 mb-5 pb-2">Save Tool</button>
             </form>
         </div>
-
         <script>
             function addInput() {
                 var input = document.createElement('input');
@@ -57,11 +48,8 @@
         <div class="col-6">
             <img src="/img/img1.png" alt="Logo" class="img-fluid float-end">
         </div>
-
     </div>
 </div>
-
 <footer th:replace="~{/fragments::footer}"></footer>
-
 </body>
 </html>

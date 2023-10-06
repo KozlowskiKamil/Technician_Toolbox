@@ -4,11 +4,11 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class ToolUpdateDTO {
+    private final List<String> actions;
     float size;
     String unit;
     private Long id;
     private String name;
-    private final List<String> actions;
     private Path img;
 
     public ToolUpdateDTO(Long id, String name, float size, String unit, List<String> actions, Path img) {

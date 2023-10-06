@@ -18,8 +18,8 @@ import java.util.logging.Logger;
 @Repository
 public class ToolkitRepository implements ToolService {
 
-    private final List<Tool> tools;
     private static final Logger LOGGER = Logger.getLogger(ToolkitRepository.class.getName());
+    private final List<Tool> tools;
 
     public ToolkitRepository() {
         tools = readToolkit();
@@ -71,7 +71,8 @@ public class ToolkitRepository implements ToolService {
     @Override
     public ToolUpdateDTO findById(Long id) {
         Tool tool = tools.stream().filter(t -> t.getId().equals(id)).findFirst().orElseThrow(() -> new RuntimeException("Did not find tool with id " + id));
-        return new ToolUpdateDTO(tool.getId(), tool.getName(), tool.getToolSize().size(), tool.getToolSize().unit(), tool.getActions(), tool.getImg());
+        return new ToolUpdateDTO(tool.getId(), tool.getName(), tool.getToolSize().size(),
+                tool.getToolSize().unit(), tool.getActions(), tool.getImg());
     }
 
     private List<Tool> readToolkit() {
