@@ -22,10 +22,10 @@ public class ViewController {
         this.toolService = toolService;
     }
 
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
+//    @GetMapping("/")
+//    public String index() {
+//        return "index";
+//    }
 
     @GetMapping("/showFormForAdd")
     public String showFormForAdd(Model model) {
@@ -46,7 +46,7 @@ public class ViewController {
         return "create";
     }
 
-    @GetMapping("/read")
+    @GetMapping("/")
     public String getTools(Model model) {
         List<Tool> tools = toolService.getTools();
         tools.sort(Comparator.comparing(Tool::getId));
