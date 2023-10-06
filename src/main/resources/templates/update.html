@@ -33,7 +33,7 @@
     </header>
     <div class="banner">
         <div>
-            <table class="table table-bordered table-striped" style="font-size: larger">
+            <table class="table table-bordered mt-3" style="font-size: larger">
                 <thead class="table-dark">
                 <th style="text-align: center"><span>You can edit any of tools and actions</span></th>
             </table>
@@ -47,6 +47,9 @@
                 <label for="name" class="form-label">Name:</label>
                 <input th:field="*{name}" type="text" class="form-control mb-4 w-30" placeholder="Name" id="name"
                        name="name" required>
+                <label for="location" class="form-label">Location:</label>
+                <input th:field="*{location}" type="text" class="form-control mb-4 w-30" placeholder="Location" id="location"
+                       name="location" required>
                 <label for="size" class="form-label">Size:</label>
                 <input th:field="*{size}" type="number" class="form-control mb-4 w-30" placeholder="Size" id="size"
                        name="size" step="any" min="0" required>
@@ -58,9 +61,10 @@
                     <input th:field="*{actions}" type="text" class="form-control mb-4 w-30" id="actions" name="actions"
                            placeholder="Hand tool operations" required>
                 </div>
-                <button type="button" class="btn btn-warning mb-3" onclick="addInput()">Add Action</button>
-                <br>
-                <button type="submit" class="btn btn-info col-2 mb-5 pb-2">Save Tool</button>
+                <div class="d-flex">
+                    <button type="button" class="btn btn-outline-dark me-5" onclick="addInput()">Add Action</button>
+                    <button type="submit" class="btn btn-dark">Save Tool</button>
+                </div>
             </form>
         </div>
         <script>

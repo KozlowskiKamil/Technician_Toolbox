@@ -66,13 +66,13 @@ public class ViewController {
         Tool.ToolSize toolSize = new Tool.ToolSize(toolDto.getSize(), toolDto.getUnit());
         Tool tool = new Tool(toolDto.getName(), toolDto.getLocation(), toolSize, actions, toolDto.getImg());
         toolService.edit(tool, idL);
-        return "redirect:/read";
+        return "redirect:/";
     }
 
     @GetMapping("/delete")
     public String delete(@RequestParam("id") Long id) {
         toolService.delete(id);
-        return "redirect:/read";
+        return "redirect:/";
     }
 
     @GetMapping("/search")

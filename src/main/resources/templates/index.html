@@ -10,13 +10,12 @@
     </div>
     <div class="row">
         <div class="col pb-5 mb-5">
-            <table class="table table-bordered table-striped mt-3">
+            <table class="table table-bordered mt-3">
                 <thead class="table-dark" style="font-size: larger">
                 <tr>
-                    <th>Id</th>
                     <th>Img</th>
                     <th>All Tolls Name</th>
-                    <th>Storage location</th>
+                    <th>Location</th>
                     <th>Size</th>
                     <th>Hand tool operations</th>
                     <th>Actions</th>
@@ -24,19 +23,18 @@
                 </thead>
                 <tbody style="font-size: larger">
                 <tr th:each="tool : ${tools}" th:object="${tool}">
-                    <td th:text="${tool.id}"/>
                     <td style="display: flex; justify-content: center; align-items: center;">
                         <img th:src="${tool.img}" alt="Tool Image" style="max-height: 100px;">
                     </td>
                     <td th:text="${tool.name}"/>
-                    <td th:text="${tool.location}"/>
+                    <td class="d-flex" th:text="${tool.location}"/>
                     <td th:text="${tool.toolSize.size} + ' ' + ${tool.toolSize.unit}"/>
                     <td>
                         <ul style="list-style-type: none">
                             <li th:each="action : ${tool.actions}" th:text="${action}"></li>
                         </ul>
                     </td>
-                    <td>
+                    <td class="d-flex">
                         <a th:href="@{/update/{id}(id=*{id})}" class="btn btn-dark btn-sm">Update</a>
                         <a th:href="@{/delete(id=${tool.id})}" class="btn btn-outline-dark btn-sm ms-2"
                            onclick="if (!(confirm('Are you sure you want to delete this tool?'))) return false">Delete</a>
