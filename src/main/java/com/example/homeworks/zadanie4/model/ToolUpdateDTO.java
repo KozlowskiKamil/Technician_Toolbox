@@ -7,6 +7,7 @@ public class ToolUpdateDTO {
     private final List<String> actions;
     float size;
     String unit;
+    private String location;
     private Long id;
     private String name;
     private Path img;
@@ -18,6 +19,24 @@ public class ToolUpdateDTO {
         this.unit = unit;
         this.actions = actions;
         this.img = img;
+    }
+
+    public ToolUpdateDTO(List<String> actions, float size, String unit, String location, Long id, String name, Path img) {
+        this.actions = actions;
+        this.size = size;
+        this.unit = unit;
+        this.location = location;
+        this.id = id;
+        this.name = name;
+        this.img = img;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Long getId() {

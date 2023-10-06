@@ -22,11 +22,6 @@ public class ViewController {
         this.toolService = toolService;
     }
 
-//    @GetMapping("/")
-//    public String index() {
-//        return "index";
-//    }
-
     @GetMapping("/showFormForAdd")
     public String showFormForAdd(Model model) {
         Tool theTool = new Tool();

@@ -10,6 +10,7 @@ import java.util.List;
 public class Tool {
     private Long id;
     private String name;
+    private String location;
     private ToolSize toolSize;
     private List<String> actions;
     private Path img;
@@ -23,6 +24,23 @@ public class Tool {
         this.toolSize = size;
         this.actions = actions;
         this.img = img;
+    }
+
+    public Tool(Long id, String name, String location, ToolSize toolSize, List<String> actions, Path img) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        this.toolSize = toolSize;
+        this.actions = actions;
+        this.img = img;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Long getId() {
